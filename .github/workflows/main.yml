@@ -37,7 +37,7 @@ jobs:
     - name: Build Docker image
       run: docker build -t my-app .
 
-    # Step 7: Install Render CLI and deploy in the same step
+    # Step 8: Install Render CLI and deploy in the same step
  
     - name: Deploy to production
       uses: johnbeynon/render-deploy-action@v0.0.8
