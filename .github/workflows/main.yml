@@ -37,14 +37,12 @@ jobs:
     - name: Build Docker image
       run: docker build -t my-app .
 
-    # Step 7: Install Render CLI and add to PATH
-    - name: Install Render CLI
+    # Step 7: Install Render CLI and deploy in the same step
+    - name: Install Render CLI and Deploy to Render
+      env:
+        RENDER_KEY: ${{ secrets.RENDER_KEY }}
       run: |
         curl -L https://cli.render.com/install.sh | sh
-        echo "$HOME/.render/bin" >> $GITHUB_PATH
-
-    # Step 8: Deploy Docker image to Render using absolute path
-    - name: Deploy to Render
-      env:
-        RENDER_KEY: ${{ secrets.RENDER_KEY }}     # Render API key stored in GitHub secrets
-      run: $HOME/.render/bin/render deploy service srv-d4at66pe2q1c73b8creg
+        export PATH="$HOME/.render/bin:$PATH"
+        render --version
+        render deploy service srv-d4at66pe2q1c73b8creg
