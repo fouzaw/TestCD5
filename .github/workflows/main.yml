@@ -52,4 +52,4 @@ jobs:
     - name: Deploy to Render
       env:
         RENDER_API_KEY: ${{ secrets.RENDER_KEY }}  # GitHub secret for API key
-      run: render deploy service SERVICE_ID          # Replace SERVICE_ID with your actual Render service ID
+      run: render deploy service srv-d4at66pe2q1c73b8creg          # Replace SERVICE_ID with your actual Render service ID
