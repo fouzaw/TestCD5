@@ -38,11 +38,9 @@ jobs:
       run: docker build -t my-app .
 
     # Step 7: Install Render CLI and deploy in the same step
-    - name: Install Render CLI and Deploy to Render
-      env:
-        RENDER_KEY: ${{ secrets.RENDER_KEY }}
-      run: |
-        curl -L https://cli.render.com/install.sh | sh
-        export PATH="$HOME/.render/bin:$PATH"
-        render --version
-        render deploy service srv-d4at66pe2q1c73b8creg
+ 
+    - name: Deploy to production
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.srv-d4at66pe2q1c73b8creg }}
+        api-key: ${{ secrets.RENDER_KEY }}
