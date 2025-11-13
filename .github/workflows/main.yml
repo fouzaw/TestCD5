@@ -36,12 +36,12 @@ jobs:
 
     # Step 6: Install Render CLI to deploy
     - name: Install Render CLI
-  	run: |
- 	   curl -L https://cli.render.com/install.sh | sh
- 	   echo "$HOME/.render/bin" >> $GITHUB_PATH
+  	  run: |
+ 	  curl -L https://cli.render.com/install.sh | sh
+ 	  echo "$HOME/.render/bin" >> $GITHUB_PATH
 
     # Step 7: Deploy the Docker image to Render
   - name: Deploy to Render
       env:
      	RENDER_KEY: ${{ secrets.RENDER_KEY }} 
- 	    run: render deploy service srv-d4at66pe2q1c73b8creg # Replace SERVICE_ID with your actual Render service ID
+ 	  run: render deploy service srv-d4at66pe2q1c73b8creg # Replace SERVICE_ID with your actual Render service ID
